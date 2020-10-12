@@ -14,7 +14,7 @@ import java.util.Date;
 public class Util extends TestBase {
 
 
-    public static boolean IsPresent(By by){
+    public static boolean IsPresent(By by){// this will check if the element is on the page regardless of it being visible or not(for visible we have display method)
         try {
             driver.findElement(by);
             return true;
@@ -24,15 +24,15 @@ public class Util extends TestBase {
 
     }
 
-    public static void Refresh(){
+    public static void Refresh(){ //the refresh method we call in CleanFealds
         if(driver!=null){
             driver.navigate().refresh();
         }
     }
 
 
-        public static String path;
-        public static void TakeScreenShot(String i) throws IOException {
+        public static String path;// I needed this so I can add the screenShot in HTML report
+        public static void TakeScreenShot(String i) throws IOException {//a metod we will use onTestFail listener, I added i so i can call the method for a particular case and put the screenShots in separate files
         Date d =new Date();
         String fileName = d.toString().replace(":","_").replace(" ","_");
         path = System.getProperty("user.dir")+"\\src\\test\\resources\\Prints"+i+"\\"+fileName+".jpg";

@@ -23,13 +23,13 @@ public class CustomListeners extends TestBase implements ITestListener {
 
     public void onTestFailure(ITestResult iTestResult) {
         try {
-            TakeScreenShot("Fail");
-            log.debug(iTestResult.getThrowable());
-            Reporter.log(String.valueOf(iTestResult.getThrowable()));
-            log.debug(iTestResult.getStatus());
-            Reporter.log(String.valueOf(iTestResult.getStatus()));
-            System.setProperty("org.uncommons.reportng.escape-output","false");
-            Reporter.log("<a href=\""+path+"\">Screenshot</a>");
+            TakeScreenShot("Fail");// ScreenShot that will put the screen in a file named Fail
+            log.debug(iTestResult.getThrowable());//add a log with the fail reason
+            Reporter.log(String.valueOf(iTestResult.getThrowable()));//add a report with the fail reason
+            log.debug(iTestResult.getStatus());// add log Fail
+            Reporter.log(String.valueOf(iTestResult.getStatus()));//add report Fail
+            System.setProperty("org.uncommons.reportng.escape-output","false");// if i don't use this the HTML from report will be printed like a normal string
+            Reporter.log("<a href=\""+path+"\">Screenshot</a>");//path to the screenshot but it doesn't because web browsers don't allow local resources, i will find another way
             System.out.println(path);
 
 
