@@ -1,0 +1,7 @@
+22:49:41,234 DEBUG devpinoyLogger:38 - file loded
+22:49:41,252 DEBUG devpinoyLogger:41 - file loded
+22:49:48,131 DEBUG devpinoyLogger:46 - ChromeDriver set
+22:49:52,435 DEBUG devpinoyLogger:58 - open url
+22:50:01,256 DEBUG devpinoyLogger:60 - window maximize
+22:51:09,729 DEBUG devpinoyLogger:27 - java.lang.AssertionError: expected [true] but found [false]
+22:51:09,730 DEBUG devpinoyLogger:29 - 2

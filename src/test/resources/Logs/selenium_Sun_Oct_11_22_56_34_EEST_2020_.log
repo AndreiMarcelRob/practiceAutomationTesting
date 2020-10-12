@@ -1,0 +1,5 @@
+22:56:34,614 DEBUG devpinoyLogger:38 - file loded
+22:56:34,630 DEBUG devpinoyLogger:41 - file loded
+22:56:42,918 DEBUG devpinoyLogger:46 - ChromeDriver set
+22:56:50,017 DEBUG devpinoyLogger:58 - open url
+22:56:56,245 DEBUG devpinoyLogger:60 - window maximize

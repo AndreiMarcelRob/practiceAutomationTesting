@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Chrome">
+
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+        <listener class-name="Listeners.CustomListeners"/>
+    </listeners>
+
+    <test name="Home Page Test">
+        <classes>
+            <class name="TestCases.HomePage" />
+        </classes>
+    </test> <!-- Test -->
+
+    <test name="LogIn Page Test">
+        <classes>
+            <class name="TestCases.LogInPage" />
+        </classes>
+    </test> <!-- Test -->
+
+    <test name="Registration Page Test">
+        <classes>
+            <class name="TestCases.RegistrationPage" />
+        </classes>
+    </test> <!-- Test -->
+
+    <test name="Shop Page Test">
+        <classes>
+            <class name="TestCases.ShopPage" />
+        </classes>
+    </test> <!-- Test -->
+
+
+
+</suite> <!-- Suite -->

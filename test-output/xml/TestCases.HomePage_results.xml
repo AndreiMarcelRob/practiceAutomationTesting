@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Home Page Test"
+           tests="3"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="46.819">
+  <properties />
+  
+  
+            <testcase name="HomePageArrivalsAreNavigabile" time="45.779" classname="TestCases.HomePage" />
+                <testcase name="HomePageSlidersNumber" time="0.323" classname="TestCases.HomePage" />
+                <testcase name="HomePageArrivalsNumber" time="0.717" classname="TestCases.HomePage" />
+      
+</testsuite>
