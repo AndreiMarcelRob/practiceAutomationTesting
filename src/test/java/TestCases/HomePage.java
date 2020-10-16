@@ -11,20 +11,21 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 import static Utilities.Util.IsPresent;
+import static Utilities.Util.click;
 
 
 public class HomePage extends TestBase {
 
     @BeforeMethod
     public static void stepsThreeAndFour(){
-        driver.findElement(By.id(OR.getProperty("ShopMenu"))).click();
-        driver.findElement(By.id(OR.getProperty("HomePageBtn"))).click();
+        click("ShopMenu_ID");
+        click("HomePageBtn_ID");
     }
 
     @Test
     public static void HomePageSlidersNumber()
     {
-        List<WebElement> sliders = driver.findElements(By.xpath(OR.getProperty("SlidersPartial")));
+        List<WebElement> sliders = driver.findElements(By.xpath(OR.getProperty("SlidersPartial_XPATH")));
         Assert.assertEquals(sliders.size(),3);
     }
 
@@ -32,13 +33,13 @@ public class HomePage extends TestBase {
     public static void HomePageArrivalsNumber()
     {
 
-        List<WebElement> Arrivals = driver.findElements(By.className(OR.getProperty("ArrivalsPartial")));
+        List<WebElement> Arrivals = driver.findElements(By.className(OR.getProperty("ArrivalsPartial_CLASS")));
         Assert.assertEquals(Arrivals.size(),3);
     }
 
     @Test
     public static void HomePageArrivalsAreNavigabile() throws InterruptedException {
-        List<WebElement> Arrivals = driver.findElements(By.className(OR.getProperty("ArrivalsPartial")));
+        List<WebElement> Arrivals = driver.findElements(By.className(OR.getProperty("ArrivalsPartial_CLASS")));
         Assert.assertEquals(Arrivals.size(),3);
 
 //        for(WebElement Arrival:Arrivals){
@@ -49,21 +50,21 @@ public class HomePage extends TestBase {
 
         int elementCount = Arrivals.size();
         for (int x = 0; x < elementCount; x++) {
-            List<WebElement> elements = driver.findElements(By.xpath(OR.getProperty("Arrival")));
+            List<WebElement> elements = driver.findElements(By.xpath(OR.getProperty("Arrival_XPATH")));
             WebElement client = elements.get(x);
             client.click();
-            if(IsPresent(By.xpath(OR.getProperty("AddToCartBTN")))){
-                driver.findElement(By.xpath(OR.getProperty("AddToCartBTN"))).click();
-                driver.findElement(By.xpath(OR.getProperty("ShoppingCart"))).getText().contentEquals("1 items");
+            if(IsPresent(By.xpath(OR.getProperty("AddToCartBTN_XPATH")))){
+                click("AddToCartBTN_XPATH");
+                driver.findElement(By.className(OR.getProperty("ShoppingCart_CLASS"))).getText().contentEquals("1 items");
                 Assert.assertTrue(true);
-                driver.findElement(By.xpath(OR.getProperty("ShoppingCart"))).click();
-                driver.findElement(By.xpath(OR.getProperty("QuantityFromShoppingCart"))).clear();
-                driver.findElement(By.xpath(OR.getProperty("UpdateShoppingCart"))).click();
+                click("ShoppingCart_CLASS");
+                driver.findElement(By.xpath(OR.getProperty("QuantityFromShoppingCart_XPATH"))).clear();
+                click("UpdateShoppingCart_XPATH");
 
             }else {
-                Assert.assertTrue(IsPresent(By.xpath(OR.getProperty("OutOfStockReplacer"))));
+                Assert.assertTrue(IsPresent(By.xpath(OR.getProperty("OutOfStockReplacer_XPATH"))));
             }
-            driver.findElement(By.id(OR.getProperty("HomePageBtn"))).click();
+            click("HomePageBtn_ID");
             Thread.sleep(2000);
         }
 

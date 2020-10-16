@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.Reporter;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,5 +41,29 @@ public class Util extends TestBase {
         FileUtils.copyFile(screenshot,new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Prints"+i+"\\"+fileName+".jpg"));
     }
 
+        public static void click (String selector){
+            if(selector.endsWith("_ID")){
+                driver.findElement(By.id(OR.getProperty(selector))).click();
+                Reporter.log("click on"+selector);
+            } else if(selector.endsWith("_XPATH")){
+                driver.findElement(By.xpath(OR.getProperty(selector))).click();
+                Reporter.log("click on"+selector);
+            }else if(selector.endsWith("_CLASS")){
+                driver.findElement(By.className(OR.getProperty(selector))).click();
+                Reporter.log("click on"+selector);
+            }
+        }
 
+        public static void type(String selector,String value){
+            if(selector.endsWith("_ID")){
+                driver.findElement(By.id(OR.getProperty(selector))).sendKeys(value);
+                Reporter.log("click on"+selector);
+            } else if(selector.endsWith("_XPATH")){
+                driver.findElement(By.xpath(OR.getProperty(selector))).sendKeys(value);
+                Reporter.log("click on"+selector);
+            }else if(selector.endsWith("_CLASS")){
+                driver.findElement(By.className(OR.getProperty(selector))).sendKeys(value);
+                Reporter.log("click on"+selector);
+            }
+        }
 }
