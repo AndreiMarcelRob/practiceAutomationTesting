@@ -25,6 +25,15 @@ public class Util extends TestBase {
 
     }
 
+    public static Boolean IsNotPresent(By by){
+        try {
+            driver.findElement(by);
+            return false;
+        } catch (NoSuchElementException e) {
+            return true;
+        }
+    }
+
     public static void Refresh(){ //the refresh method we call in CleanFealds
         if(driver!=null){
             driver.navigate().refresh();

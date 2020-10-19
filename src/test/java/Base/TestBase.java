@@ -71,12 +71,12 @@ public class TestBase {
     }
 
 
-    @AfterSuite// close the window after suite
-    public void tearDown(){
-        if(driver!=null){
-            driver.close();
-        }
-    }
+//    @AfterSuite// close the window after suite
+//    public void tearDown(){
+//        if(driver!=null){
+//            driver.close();
+//        }
+//    }
 
 
 

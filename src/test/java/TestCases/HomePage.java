@@ -55,7 +55,7 @@ public class HomePage extends TestBase {
             List<WebElement> elements = driver.findElements(By.xpath(OR.getProperty("Arrival_XPATH")));
             WebElement client = elements.get(x);
             client.click();
-            if(IsPresent(By.xpath(OR.getProperty("AddToCartBTN_XPATH")))){
+            if(IsNotPresent(By.xpath(OR.getProperty("OutOfStockReplacer_XPATH")))){
                 click("AddToCartBTN_XPATH");
                 driver.findElement(By.className(OR.getProperty("ShoppingCart_CLASS"))).getText().contentEquals("1 items");
                 Assert.assertTrue(true);
@@ -102,7 +102,7 @@ public class HomePage extends TestBase {
             List<WebElement> elements = driver.findElements(By.xpath(OR.getProperty("Arrival_XPATH")));
             WebElement client = elements.get(x);
             client.click();
-            if (IsPresent(By.xpath(OR.getProperty("AddToCartBTN_XPATH")))) {
+            if (IsNotPresent(By.xpath(OR.getProperty("OutOfStockReplacer_XPATH")))) {
                 int quantityOverFlow = Integer.parseInt(driver.findElement(By.xpath(OR.getProperty("Quantity_XPATH"))).getAttribute("max"));
                 quantityOverFlow++;
                 type("Quantity_XPATH", String.valueOf(quantityOverFlow));
