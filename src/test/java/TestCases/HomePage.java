@@ -4,14 +4,16 @@ import Base.TestBase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.util.List;
-import static Utilities.Util.IsPresent;
-import static Utilities.Util.click;
+
+import static Utilities.Util.*;
 
 
 public class HomePage extends TestBase {
@@ -38,7 +40,7 @@ public class HomePage extends TestBase {
     }
 
     @Test
-    public static void HomePageArrivalsAreNavigabile() throws InterruptedException {
+    public static void HomePageArrivalsAreNavigate() throws InterruptedException {
         List<WebElement> Arrivals = driver.findElements(By.className(OR.getProperty("ArrivalsPartial_CLASS")));
         Assert.assertEquals(Arrivals.size(),3);
 
@@ -68,6 +70,59 @@ public class HomePage extends TestBase {
             Thread.sleep(2000);
         }
 
+    }
+
+    @Test
+    public static void ArrivalsImagesDescription() throws InterruptedException {
+        List<WebElement> Arrivals = driver.findElements(By.className(OR.getProperty("ArrivalsPartial_CLASS")));
+        Assert.assertEquals(Arrivals.size(),3);
+        int elementCount = Arrivals.size();
+        for (int x = 0; x < elementCount; x++) {
+            List<WebElement> elements = driver.findElements(By.xpath(OR.getProperty("Arrival_XPATH")));
+            WebElement client = elements.get(x);
+            client.click();
+            Thread.sleep(2000);
+            click("Description_ID");
+            Assert.assertTrue(IsPresent(By.id(OR.getProperty("Description_ID"))));
+            Assert.assertTrue(driver.findElement(By.id(OR.getProperty("Description_ID"))).getText().contains(OR.getProperty("Description"+x)));
+            Assert.assertTrue((driver.findElement(By.id(OR.getProperty("Description_ID"))).isDisplayed()));
+            click("HomePageBtn_ID");
+        }
+
+
+    }
+
+    @Test
+    public static void AddingMoreProductsThenAvailability() throws InterruptedException {
+
+        List<WebElement> Arrivals = driver.findElements(By.className(OR.getProperty("ArrivalsPartial_CLASS")));
+        Assert.assertEquals(Arrivals.size(), 3);
+        int elementCount = Arrivals.size();
+        for (int x = 0; x < elementCount; x++) {
+            List<WebElement> elements = driver.findElements(By.xpath(OR.getProperty("Arrival_XPATH")));
+            WebElement client = elements.get(x);
+            client.click();
+            if (IsPresent(By.xpath(OR.getProperty("AddToCartBTN_XPATH")))) {
+                int quantityOverFlow = Integer.parseInt(driver.findElement(By.xpath(OR.getProperty("Quantity_XPATH"))).getAttribute("max"));
+                quantityOverFlow++;
+                type("Quantity_XPATH", String.valueOf(quantityOverFlow));
+                click("AddToCartBTN_XPATH");
+//                // Explicit wait condition for alert
+//                WebDriverWait w = new WebDriverWait(driver, 5);
+//                //alertIsPresent() condition applied
+//                Assert.assertTrue(w.until(ExpectedConditions.alertIsPresent())!=null);(mot working)
+                Assert.assertTrue(ExpectedConditions.alertIsPresent()!=null);
+
+
+
+
+
+            }
+            click("HomePageBtn_ID");
+//            Thread.sleep(2000);
+
+
+        }
     }
 
 
